@@ -1,0 +1,14 @@
+services:
+  cd12652:
+    build: .
+    ipc: host
+    ulimits:
+      memlock: -1
+      stack: 67108864
+    volumes:
+      - ./:/home
+    ports:
+      - "${JUPYTER_PORT:-8888}:8888"
+      - "${TENSORBOARD_PORT:-6006}:6006"
+    working_dir: /home
+    stdin_open: true
